@@ -9,6 +9,7 @@
 #import "MoviesViewController.h"
 #import "MoviesTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "MovieDetailsViewController.h"
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,6 +24,7 @@
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.title = @"Movies";
 
     [self fetchMovies];
 }
@@ -49,7 +51,6 @@
                                                                                     options:kNilOptions
                                                                                       error:&jsonError];
                                                     self.movies = responseDictionary[@"movies"];
-                                                    NSLog(@"Response: %@", responseDictionary);
                                                     [self.tableView reloadData];
                                                 } else {
                                                     NSLog(@"An error occurred: %@", error.description);
@@ -76,6 +77,13 @@
     NSURL *url = [NSURL URLWithString:self.movies[indexPath.row][@"posters"][@"thumbnail"]];
     [cell.posterImageView setImageWithURL:url];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    vc.movie = self.movies[indexPath.row];
 }
 
 - (void)didReceiveMemoryWarning {

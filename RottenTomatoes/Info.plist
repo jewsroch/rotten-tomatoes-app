@@ -6,6 +6,11 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>content6.flixster.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>api.rottentomatoes.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
