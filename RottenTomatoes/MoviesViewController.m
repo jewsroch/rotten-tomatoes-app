@@ -15,6 +15,8 @@
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *movies;
+@property (weak, nonatomic) IBOutlet UIView *errorView;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
 @end
 
@@ -23,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.errorView.hidden = true;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.title = @"Movies";
@@ -57,7 +60,9 @@
                                                     [JTProgressHUD hide];
                                                     [self.tableView reloadData];
                                                 } else {
+                                                    self.errorView.hidden = false;
                                                     NSLog(@"An error occurred: %@", error.description);
+                                                    self.errorLabel.text = error.localizedDescription;
                                                 }
                                             }];
 
