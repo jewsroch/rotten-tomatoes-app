@@ -14,9 +14,10 @@
 
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UIView *errorView;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSArray *movies;
 
 @end
 
@@ -25,16 +26,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.errorView.hidden = true;
+    self.errorView.hidden = YES;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.title = @"Movies";
     
-    [self fetchMovies];
+    [self fetchMovies:YES];
+
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex: 0];
 }
 
-- (void)fetchMovies {
-    [JTProgressHUD show];
+- (void)refresh {
+    [self fetchMovies:NO];
+}
+
+- (void)fetchMovies:(BOOL)showLoading {
     NSString *urlString = @"https://gist.githubusercontent.com/timothy1ee/d1778ca5b944ed974db0/raw/489d812c7ceeec0ac15ab77bf7c47849f2d1eb2b/gistfile1.json";
 
     NSURL *url = [NSURL URLWithString:urlString];
@@ -44,6 +54,9 @@
     [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                   delegate: nil
                              delegateQueue: [NSOperationQueue mainQueue]];
+    if (showLoading) {
+        [JTProgressHUD show];
+    }
 
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData * _Nullable data,
@@ -57,12 +70,17 @@
                                                                                       error:&jsonError];
 
                                                     self.movies = responseDictionary[@"movies"];
-                                                    [JTProgressHUD hide];
                                                     [self.tableView reloadData];
+                                                    self.errorView.hidden = YES;
+                                                    if ([JTProgressHUD isVisible]) {
+                                                        [JTProgressHUD hide];
+                                                    }
+                                                    [self.refreshControl endRefreshing];
                                                 } else {
-                                                    self.errorView.hidden = false;
-                                                    NSLog(@"An error occurred: %@", error.description);
+                                                    [self.refreshControl endRefreshing];
+                                                    self.errorView.hidden = NO;
                                                     self.errorLabel.text = error.localizedDescription;
+                                                    NSLog(@"An error occurred: %@", error.description);
                                                 }
                                             }];
 
