@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *synopsisScrollView;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
 
 @implementation MovieDetailsViewController
@@ -35,17 +36,18 @@
     NSURL *url = [NSURL URLWithString:newUrl];
     [self.movieImageView setImageWithURL:url];
     
+    self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"synopsis"];
     self.synopsisLabel.numberOfLines = 0;
-    
     [self.synopsisLabel sizeToFit];
+
     
     CGRect aFrame = self.infoView.frame;
-    aFrame.size.height = self.synopsisLabel.frame.size.height + 16;
+    aFrame.size.height = (self.synopsisLabel.frame.size.height >= 199) ? self.synopsisLabel.frame.size.height + 80 : 215;
     self.infoView.frame = aFrame;
     
     self.synopsisScrollView.contentSize = CGSizeMake(self.synopsisScrollView.bounds.size.width,
-                                                     self.infoView.frame.size.height + 400);
+                                                     self.infoView.frame.size.height + 408);
 }
 
 - (void)didReceiveMemoryWarning {

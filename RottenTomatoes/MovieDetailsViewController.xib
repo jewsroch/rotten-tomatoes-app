@@ -11,6 +11,7 @@
                 <outlet property="movieImageView" destination="y17-ea-c1P" id="DBD-4t-C9d"/>
                 <outlet property="synopsisLabel" destination="fwp-S7-F1Z" id="qhE-fi-IBw"/>
                 <outlet property="synopsisScrollView" destination="qxM-C3-j4A" id="QO1-eY-81x"/>
+                <outlet property="titleLabel" destination="LMA-1p-LMQ" id="Kbm-RL-PdC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,14 +36,21 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view alpha="0.94999999999999996" contentMode="scaleToFill" id="bXO-lE-rMk">
-                            <rect key="frame" x="0.0" y="400" width="375" height="400"/>
+                            <rect key="frame" x="0.0" y="408" width="375" height="215"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fwp-S7-F1Z">
-                                    <rect key="frame" x="8" y="8" width="359" height="222"/>
+                                    <rect key="frame" x="8" y="69" width="359" height="130"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Rock" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LMA-1p-LMQ">
+                                    <rect key="frame" x="8" y="8" width="188" height="53"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
