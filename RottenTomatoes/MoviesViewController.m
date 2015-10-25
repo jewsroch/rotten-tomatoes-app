@@ -80,6 +80,9 @@
                                                     [self.refreshControl endRefreshing];
                                                     self.errorView.hidden = NO;
                                                     self.errorLabel.text = error.localizedDescription;
+                                                    if ([JTProgressHUD isVisible]) {
+                                                        [JTProgressHUD hide];
+                                                    }
                                                     NSLog(@"An error occurred: %@", error.description);
                                                 }
                                             }];
@@ -99,10 +102,22 @@
 
     MoviesTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"movieCell"];
 
+    NSNumber *audienceRating = self.movies[indexPath.row][@"ratings"][@"audience_score"];
+    NSNumber *criticsRating = self.movies[indexPath.row][@"ratings"][@"critics_score"];
+    NSString *audienceStatus = ([audienceRating intValue] >= 60) ? @"fresh" : @"rotten";
+    NSString *criticStatus = ([criticsRating intValue] >= 60) ? @"fresh" : @"rotten";
+    NSURL *posterUrl = [NSURL URLWithString:self.movies[indexPath.row][@"posters"][@"thumbnail"]];
+
     cell.titleLabel.text    = self.movies[indexPath.row][@"title"];
     cell.synopsisLabel.text = self.movies[indexPath.row][@"synopsis"];
-    NSURL *url = [NSURL URLWithString:self.movies[indexPath.row][@"posters"][@"thumbnail"]];
-    [cell.posterImageView setImageWithURL:url];
+    cell.ratingLabel.text = self.movies[indexPath.row][@"mpaa_rating"];
+    cell.audienceRatingLabel.text = [NSString stringWithFormat: @"%@%%", [audienceRating stringValue]];
+    cell.criticsRatingLabel.text = [NSString stringWithFormat: @"%@%%", [criticsRating stringValue]];
+    cell.lengthLabel.text = [NSString stringWithFormat:@"%@ min", [self.movies[indexPath.row][@"runtime"] stringValue]];
+    [cell.audienceRatingImage setImage:[UIImage imageNamed:audienceStatus]];
+    [cell.criticsRatingImage setImage:[UIImage imageNamed:criticStatus]];
+    [cell.posterImageView setImageWithURL:posterUrl];
+    
     return cell;
 }
 
