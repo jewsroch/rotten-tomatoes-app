@@ -11,13 +11,19 @@
 @implementation MoviesTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    // set selection color
+    UIView *myBackView = [[UIView alloc] initWithFrame:self.frame];
+    myBackView.backgroundColor = [UIColor colorWithRed:0.25 green:0.42 blue:0.27 alpha:1.0];
+    self.selectedBackgroundView = myBackView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    if (selected) {
+        self.backgroundColor = [UIColor colorWithRed:0.25 green:0.42 blue:0.27 alpha:1.0];
+    } else {
+        self.backgroundColor = [UIColor whiteColor];
+    }
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
-
 @end

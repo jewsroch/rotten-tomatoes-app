@@ -13,9 +13,9 @@
 		8EB21AE21BD7427000AC0925 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB21AE11BD7427000AC0925 /* AppDelegate.m */; };
 		8EB21AE51BD7427000AC0925 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB21AE41BD7427000AC0925 /* MoviesViewController.m */; };
 		8EB21AE81BD7427000AC0925 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB21AE61BD7427000AC0925 /* Main.storyboard */; };
-		8EB21AEA1BD7427000AC0925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EB21AE91BD7427000AC0925 /* Assets.xcassets */; };
 		8EB21AED1BD7427000AC0925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EB21AEB1BD7427000AC0925 /* LaunchScreen.storyboard */; };
 		8EB21AF61BD74FEF00AC0925 /* MoviesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB21AF51BD74FEF00AC0925 /* MoviesTableViewCell.m */; };
+		8EC206C51BDECEB900C62CF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EC206C41BDECEB900C62CF7 /* Assets.xcassets */; };
 		E0DFC66DDB4C0DE18894961C /* libPods-RottenTomatoes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A14A1B6EC028BCD54A079F /* libPods-RottenTomatoes.a */; };
 /* End PBXBuildFile section */
 
@@ -32,11 +32,11 @@
 		8EB21AE31BD7427000AC0925 /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		8EB21AE41BD7427000AC0925 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
 		8EB21AE71BD7427000AC0925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8EB21AE91BD7427000AC0925 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EB21AEC1BD7427000AC0925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EB21AEE1BD7427000AC0925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EB21AF41BD74FEF00AC0925 /* MoviesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesTableViewCell.h; sourceTree = "<group>"; };
 		8EB21AF51BD74FEF00AC0925 /* MoviesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesTableViewCell.m; sourceTree = "<group>"; };
+		8EC206C41BDECEB900C62CF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB6B4ECF85E7C613AB108C87 /* Pods-RottenTomatoes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RottenTomatoes.release.xcconfig"; path = "Pods/Target Support Files/Pods-RottenTomatoes/Pods-RottenTomatoes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +81,7 @@
 		8EB21ADC1BD7427000AC0925 /* RottenTomatoes */ = {
 			isa = PBXGroup;
 			children = (
+				8EC206C41BDECEB900C62CF7 /* Assets.xcassets */,
 				8EB21AE01BD7427000AC0925 /* AppDelegate.h */,
 				8EB21AE11BD7427000AC0925 /* AppDelegate.m */,
 				8EB21AE31BD7427000AC0925 /* MoviesViewController.h */,
@@ -91,7 +92,6 @@
 				8E8BC00F1BD89C92003A808E /* MovieDetailsViewController.h */,
 				8E8BC0101BD89C92003A808E /* MovieDetailsViewController.m */,
 				8E8BC0111BD89C92003A808E /* MovieDetailsViewController.xib */,
-				8EB21AE91BD7427000AC0925 /* Assets.xcassets */,
 				8EB21AEB1BD7427000AC0925 /* LaunchScreen.storyboard */,
 				8EB21AEE1BD7427000AC0925 /* Info.plist */,
 				8EB21ADD1BD7427000AC0925 /* Supporting Files */,
@@ -179,7 +179,7 @@
 			files = (
 				8E8BC0131BD89C92003A808E /* MovieDetailsViewController.xib in Resources */,
 				8EB21AED1BD7427000AC0925 /* LaunchScreen.storyboard in Resources */,
-				8EB21AEA1BD7427000AC0925 /* Assets.xcassets in Resources */,
+				8EC206C51BDECEB900C62CF7 /* Assets.xcassets in Resources */,
 				8EB21AE81BD7427000AC0925 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

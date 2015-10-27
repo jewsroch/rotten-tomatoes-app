@@ -34,6 +34,9 @@
                                                   withTemplate:@"http://content6.flixster.com/$1"];
     
     NSURL *url = [NSURL URLWithString:newUrl];
+    [self.movieImageView setImageWithURL:[NSURL URLWithString:originalUrl]
+                        placeholderImage:[UIImage imageNamed:@"ticket_large"]];
+
     [self.movieImageView setImageWithURL:url];
     
     self.titleLabel.text = self.movie[@"title"];
@@ -41,13 +44,19 @@
     self.synopsisLabel.numberOfLines = 0;
     [self.synopsisLabel sizeToFit];
 
+    // Get Frame height
+    CGFloat frameMaxHeight = self.synopsisScrollView.frame.size.height;
     
+    // Update size and position of info frame
     CGRect aFrame = self.infoView.frame;
-    aFrame.size.height = (self.synopsisLabel.frame.size.height >= 199) ? self.synopsisLabel.frame.size.height + 80 : 215;
+    aFrame.size.height = self.synopsisLabel.frame.size.height + 80;
+    CGFloat offset = (aFrame.size.height < 215) ? (frameMaxHeight - aFrame.size.height) : frameMaxHeight - 215;
+    aFrame.origin.y = offset;
     self.infoView.frame = aFrame;
-    
+
+    // Update height of scrollView based on size of infoVie and offset.
     self.synopsisScrollView.contentSize = CGSizeMake(self.synopsisScrollView.bounds.size.width,
-                                                     self.infoView.frame.size.height + 408);
+                                                     self.infoView.frame.size.height + offset);
 }
 
 - (void)didReceiveMemoryWarning {

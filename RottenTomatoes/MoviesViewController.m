@@ -116,8 +116,7 @@
     cell.lengthLabel.text = [NSString stringWithFormat:@"%@ min", [self.movies[indexPath.row][@"runtime"] stringValue]];
     [cell.audienceRatingImage setImage:[UIImage imageNamed:audienceStatus]];
     [cell.criticsRatingImage setImage:[UIImage imageNamed:criticStatus]];
-    [cell.posterImageView setImageWithURL:posterUrl];
-    
+    [cell.posterImageView setImageWithURL:posterUrl placeholderImage:[UIImage imageNamed:@"ticket"]];
     return cell;
 }
 
