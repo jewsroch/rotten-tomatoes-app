@@ -28,7 +28,7 @@ Time spent: `<Number of hours spent>`
 - [x] Add default image (if one is not available or hasn't loaded)
 
 ### Walkthrough
-![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
+![Video Walkthrough](walkThrough.gif)
 
 Credits
 ---------

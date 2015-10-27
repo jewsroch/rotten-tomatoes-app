@@ -355,7 +355,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F6D01BBCD0AEFB98DCE6951 /* Pods-RottenTomatoes.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ticketIcon;
 				INFOPLIST_FILE = RottenTomatoes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -369,7 +369,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FB6B4ECF85E7C613AB108C87 /* Pods-RottenTomatoes.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ticketIcon;
 				INFOPLIST_FILE = RottenTomatoes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

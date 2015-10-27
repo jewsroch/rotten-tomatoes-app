@@ -22,23 +22,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *originalUrl = self.movie[@"posters"][@"thumbnail"];
+    // Get / Build Image Urls
+    NSString *urlThumbnail = self.movie[@"posters"][@"thumbnail"];
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http://resizing.flixster.com/.*/.*/.*.cloudfront.net/"
                                                                            options:NSRegularExpressionCaseInsensitive
                                                                              error:&error];
     
-    NSString *newUrl = [regex stringByReplacingMatchesInString:originalUrl
+    NSString *urlOriginalString = [regex stringByReplacingMatchesInString:urlThumbnail
                                                        options:0
-                                                         range:NSMakeRange(0, [originalUrl length])
+                                                         range:NSMakeRange(0, [urlThumbnail length])
                                                   withTemplate:@"http://content6.flixster.com/$1"];
     
-    NSURL *url = [NSURL URLWithString:newUrl];
-    [self.movieImageView setImageWithURL:[NSURL URLWithString:originalUrl]
+    NSURL *urlOriginal = [NSURL URLWithString:urlOriginalString];
+    
+    // Load thumbnail first (with default if no connection).
+    [self.movieImageView setImageWithURL:[NSURL URLWithString:urlThumbnail]
                         placeholderImage:[UIImage imageNamed:@"ticket_large"]];
 
-    [self.movieImageView setImageWithURL:url];
+    // Load high-res once loaded
+    [self.movieImageView setImageWithURL:urlOriginal];
     
+    // Set Labels
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"synopsis"];
     self.synopsisLabel.numberOfLines = 0;
